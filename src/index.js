@@ -1,39 +1,17 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-function Message(props){
-  if (props.value){
+function ToonList (props){
+  const list = props.cartoon
+  // const toons = list.map((list,index)=><li key={index}>{list}</li>)
+return <ul>{
 
-    return   <h1>This is first message</h1>
+    list.map((list,index)=><li key={index}>{list}</li>)
   }
-  return        <h1>Im second message</h1>
-
-
+</ul>
 }
-
-class Btn extends React.Component{
-  constructor(props){
-    super(props);
-    this.state = {value:true}
-  }
-
-  handleClick = () => {
-    this.setState({
-      value : !this.state.value
-    });
-  }
-
-  render (){
-    return(
-      <div>
-       <button onClick={this.handleClick}>Change the message</button>
-       <Message value={this.state.value} />
-       </div>
-    )
-  }
-}
-
+const cartoons = ['Pikachu','Cania','Tomi','Tomi']
 ReactDOM.render(
-  <Btn/>,
+  <ToonList cartoon={cartoons}/>,
   document.getElementById('root')
-)
+);
